@@ -1,1 +1,1 @@
-Code repo for dbt tutorial at 
+Code repo for dbt tutorial at https://www.startdataengineering.com/post/dbt-data-build-tool-tutorial
