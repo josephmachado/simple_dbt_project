@@ -1,8 +1,8 @@
 with source as (
-  select * from {{ ref('src_customer') }}
+  select * from {{ ref('customer') }}
 ),
 
-stage_customer as (
+src_customer as (
   select
     customer_order_id,
     customer_unique_id,
@@ -13,4 +13,4 @@ stage_customer as (
 )
 select
   *
-from stage_customer
+from src_customer

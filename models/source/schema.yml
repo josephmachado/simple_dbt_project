@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: src_customer
+    columns:
+      - name: customer_unique_id
+        tests:
+          - not_null
+      # The test case below will fail, added it in for playing with
+      # dbt's testing framework
+      #- name: customer_zip_code_prefix
+      #  tests:
+      #    - unique
