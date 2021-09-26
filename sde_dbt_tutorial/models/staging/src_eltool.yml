@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: warehouse
+    description: Data from application database, brought in by an EL process.
+    tables:
+      - name: customers
+        columns:
+        - name: customer_id
+          tests:
+            - not_null
+
+      - name: orders
+        columns:
+        - name: order_id
+          tests:
+            - not_null
+            - unique
+        - name: cust_id
+          tests:
+            - relationships:
+                to: source('warehouse', 'customers')
+                field: customer_id
+      
+      - name: state
