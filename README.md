@@ -57,3 +57,5 @@ select * from warehouse.customer_orders limit 3;
 cd ..
 docker compose down
 ```
+
+just a test
