@@ -13,6 +13,7 @@ select c.customer_id,
     s.state_name,
     c.datetime_created,
     c.datetime_updated,
+    c.account_age_in_months,
     c.dbt_valid_from::TIMESTAMP as valid_from,
     CASE
         WHEN c.dbt_valid_to IS NULL THEN '9999-12-31'::TIMESTAMP
