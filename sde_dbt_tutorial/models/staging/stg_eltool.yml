@@ -7,4 +7,15 @@ models:
         tests:
           - not_null
   - name: stg_eltool__orders
+    columns:
+      - name: order_status
+        tests:
+          - accepted_values:
+              values:
+              - delivered
+              - invoiced
+              - shipped
+              - unavailable
+              - processing
+              - canceled
   - name: stg_eltool__state
