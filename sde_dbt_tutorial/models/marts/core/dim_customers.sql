@@ -5,8 +5,8 @@ with customers as (
 state as (
     select *
     from {{ ref('stg_eltool__state') }}
-)
-select c.customer_id,
+),
+final as (select c.customer_id,
     c.zipcode,
     c.city,
     c.state_code,
@@ -21,3 +21,7 @@ select c.customer_id,
     END as valid_to
 from customers c
     join state s on c.state_code = s.state_code
+)
+
+select *
+from final
