@@ -2,13 +2,16 @@ version: 2
 
 models:
   - name: stg_eltool__customers
+    description: Staged customer data from our application database, brought in by an EL process.
     columns:
       - name: customer_id
         tests:
           - not_null
   - name: stg_eltool__orders
+    description: Staged orders data from our application database, brought in by an EL process.
     columns:
       - name: order_status
+        description: The status of the order.
         tests:
           - accepted_values:
               values:
@@ -19,3 +22,4 @@ models:
               - processing
               - canceled
   - name: stg_eltool__state
+    description: Staged state data from our application database, brought in by an EL process.

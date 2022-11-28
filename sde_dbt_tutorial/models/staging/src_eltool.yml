@@ -5,12 +5,14 @@ sources:
     description: Data from application database, brought in by an EL process.
     tables:
       - name: customers
+        description: Raw customers data.
         columns:
         - name: customer_id
           tests:
             - not_null
 
       - name: orders
+        description: Raw orders data.
         columns:
         - name: order_id
           tests:
@@ -23,3 +25,9 @@ sources:
                 field: customer_id
       
       - name: state
+        description: Raw state data.
+        columns:
+        - name: state_identifier
+          tests:
+            - unique
+            - not_null
