@@ -7,3 +7,4 @@ models:
         tests:
           - not_null
   - name: fct_orders
+  - name: int_orders__pivoted
