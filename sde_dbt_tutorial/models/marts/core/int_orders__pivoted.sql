@@ -15,5 +15,4 @@ pivoted as (
     group by customer_id
 )
 
-
 select * from pivoted
