@@ -11,6 +11,7 @@ Clone the git repo and start the data warehouse docker container
 
 ```bash
 git clone https://github.com/josephmachado/simple_dbt_project.git
+cd simple_dbt_project
 docker compose up -d
 ```
 
