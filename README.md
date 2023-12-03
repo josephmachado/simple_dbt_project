@@ -11,6 +11,7 @@ Clone the git repo and start the warehouse & dbt docker containers, as shown bel
 
 ```bash
 git clone https://github.com/josephmachado/simple_dbt_project.git
+cd simple_dbt_project
 make up
 make sh
 ```
