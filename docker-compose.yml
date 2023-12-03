@@ -1,18 +1,36 @@
 services:
-    postgres:
-      image: postgres:13
-      environment:
-        POSTGRES_USER: dbt
-        POSTGRES_PASSWORD: password1234
-        POSTGRES_DB: dbt
-      volumes:
-        - ./raw_data:/input_data
-        - ./temp:/temp
-        - ./warehouse_setup:/docker-entrypoint-initdb.d
-      healthcheck:
-        test: ["CMD", "pg_isready", "-U", "airflow"]
-        interval: 5s
-        retries: 5
-      restart: always
-      ports:
-        - "5432:5432"
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: dbt
+      POSTGRES_PASSWORD: password1234
+      POSTGRES_DB: dbt
+    volumes:
+      - ./raw_data:/input_data
+      - ./temp:/temp
+      - ./warehouse_setup:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "airflow" ]
+      interval: 5s
+      retries: 5
+    restart: always
+    ports:
+      - "5432:5432"
+    networks:
+      - sde_network
+
+  dbt:
+    image: dbt
+    container_name: dbt
+    build:
+      context: ./containers/
+    volumes:
+      - ./sde_dbt_tutorial:/opt/sde
+    ports:
+      - "8080:8080"
+    networks:
+      - sde_network
+
+networks:
+  sde_network:
+    name: sde_network

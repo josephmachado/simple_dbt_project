@@ -7,7 +7,7 @@ sde_dbt_tutorial:
     dev:
       type: postgres
       threads: 1
-      host: localhost
+      host: postgres
       port: 5432
       user: dbt
       pass: password1234
