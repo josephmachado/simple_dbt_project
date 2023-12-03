@@ -7,21 +7,21 @@ This is the code repo for dbt tutorial at https://www.startdataengineering.com/p
 3. [pgcli](https://www.pgcli.com/install)
 4. [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-Clone the git repo and start the data warehouse docker container
+Clone the git repo and start the warehouse & dbt docker containers, as shown below.
 
 ```bash
 git clone https://github.com/josephmachado/simple_dbt_project.git
-cd simple_dbt_project
-docker compose up -d
+make up
+make sh
 ```
 
 ## Run dbt 
 
 ```bash
-export DBT_PROFILES_DIR=$(pwd)
-cd sde_dbt_tutorial
+dbt deps
 dbt snapshot
 dbt run
+dbt run --select elementary # Optional for generating observability report
 dbt test
 dbt docs generate
 dbt docs serve
