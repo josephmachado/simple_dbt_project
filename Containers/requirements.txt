@@ -1,2 +1,3 @@
 dbt-core==1.7.3
 dbt-postgres==1.7.3
+elementary-data==0.12.1

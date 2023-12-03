@@ -6,10 +6,24 @@ sde_dbt_tutorial:
   outputs:
     dev:
       type: postgres
-      threads: 1
+      threads: 4
       host: postgres
       port: 5432
       user: dbt
       pass: password1234
       dbname: dbt
       schema: warehouse
+
+elementary:
+  outputs:
+    default:
+      type: postgres
+      host: postgres
+      port: 5432
+      user: dbt
+      password: password1234
+      dbname: dbt
+      schema: warehouse_elementary
+      threads: 4
+      keepalives_idle: 0 # default 0 seconds
+      connect_timeout: 10 # default 10 seconds

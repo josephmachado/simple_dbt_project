@@ -5,3 +5,5 @@ logs/
 
 dbt_packages/
 package-lock.yml
+
+edr_target/

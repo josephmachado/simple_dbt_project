@@ -1,5 +1,7 @@
 This is the code repo for dbt tutorial at https://www.startdataengineering.com/post/dbt-data-build-tool-tutorial
 
+# Setup
+
 ### Prerequisites
 
 1. [Docker](https://docs.docker.com/get-docker/) and [Docker compose](https://docs.docker.com/compose/install/)
@@ -26,13 +28,25 @@ Once you are inside the dbt docker container, run the following commands.
 cd $WORKDIR # go to the directory where we have dbt code
 dbt deps
 dbt snapshot
-dbt run
+dbt run --select sde_dbt_tutorial
 dbt test
 dbt docs generate
 dbt docs serve
 ```
 
-Go to http://localhost:8080 to see the dbt documentation (press ctrl+c). You can exit the dbt container using `exit`.
+Go to http://localhost:8080 to see the dbt documentation (press ctrl+c). 
+
+
+**[Optional] We can create a data observability report with Elemetary as shown below:**
+
+```bash
+dbt run --select elementary
+edr report
+```
+
+From your file system, open the html file at the path `sde_dbt_tutorial/edr_target/elementary_report.html` on your broswer to see the data observability report.
+
+You can exit the dbt container using `exit`.
 
 Let's do some testing, Insert some data into source customer table, to demonstrate dbt snapshots. From your terminal (after exiting dbt container) run the following command.
 
@@ -51,8 +65,8 @@ Run snapshot and create models again.
 ```bash
 make sh
 cd $WORKDIR # go to the directory where we have dbt code
-dbt snapshot
-dbt run
+dbt snapshot --select sde_dbt_tutorial
+dbt run --select sde_dbt_tutorial
 ```
 You can exit the dbt container using `exit`. From your terminal (after exiting dbt container) run the following command.
 
