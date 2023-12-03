@@ -16,39 +16,51 @@ make up
 make sh
 ```
 
+We use `make sh` to log into the dbt docker container, & run dbt commands.
+
 ## Run dbt 
 
+Once you are inside the dbt docker container, run the following commands.
+
 ```bash
+cd $WORKDIR # go to the directory where we have dbt code
 dbt deps
 dbt snapshot
 dbt run
-dbt run --select elementary # Optional for generating observability report
 dbt test
 dbt docs generate
 dbt docs serve
 ```
 
-Insert updates into source customer table, to demonstrate snapshot
+Go to http://localhost:8080 to see the dbt documentation (press ctrl+c). You can exit the dbt container using `exit`.
+
+Let's do some testing, Insert some data into source customer table, to demonstrate dbt snapshots. From your terminal (after exiting dbt container) run the following command.
 
 ```bash
-pgcli -h localhost -U dbt -p 5432 -d dbt
-# password is password1234
+make warehouse
+```
+You will be logged into your warehouse, here use the below command:
+
+```sql
 COPY warehouse.customers(customer_id, zipcode, city, state_code, datetime_created, datetime_updated) FROM '/input_data/customer_new.csv' DELIMITER ',' CSV HEADER;
 \q
 ```
 
 Run snapshot and create models again.
 
-```
+```bash
+make sh
+cd $WORKDIR # go to the directory where we have dbt code
 dbt snapshot
 dbt run
 ```
-
-You can log into the data warehouse to see the models.
+You can exit the dbt container using `exit`. From your terminal (after exiting dbt container) run the following command.
 
 ```bash
-pgcli -h localhost -U dbt -p 5432 -d dbt
-# password is password1234
+make warehouse
+```
+
+```sql
 select * from warehouse.customer_orders limit 3;
 \q
 ```
@@ -56,6 +68,5 @@ select * from warehouse.customer_orders limit 3;
 ## Stop docker container
 
 ```bash
-cd ..
-docker compose down
+make down
 ```
