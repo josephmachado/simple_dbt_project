@@ -32,7 +32,19 @@ dbt docs generate
 dbt docs serve
 ```
 
-Go to http://localhost:8080 to see the dbt documentation (press ctrl+c). You can exit the dbt container using `exit`.
+Go to http://localhost:8080 to see the dbt documentation (press ctrl+c). 
+
+
+**[Optional] We can create a data observability report with Elemetary as shown below:**
+
+```bash
+dbt deps && dbt run --select elementary
+edr report
+```
+
+From your file system, open the html file at the path `sde_dbt_tutorial/edr_target/elementary_report.html` on your broswer to see the data observability report.
+
+You can exit the dbt container using `exit`.
 
 Let's do some testing, Insert some data into source customer table, to demonstrate dbt snapshots. From your terminal (after exiting dbt container) run the following command.
 
