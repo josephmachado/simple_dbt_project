@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: postgres:13
+    image: postgres:15
     environment:
       POSTGRES_USER: dbt
       POSTGRES_PASSWORD: password1234
@@ -17,20 +17,8 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - sde_network
-
-  dbt:
-    image: dbt
-    container_name: dbt
-    build:
-      context: ./containers/
-    volumes:
-      - ./sde_dbt_tutorial:/opt/sde
-    ports:
-      - "8080:8080"
-    networks:
-      - sde_network
+      - dbt_project_network
 
 networks:
-  sde_network:
-    name: sde_network
+  dbt_project_network:
+    name: dbt_project_network
