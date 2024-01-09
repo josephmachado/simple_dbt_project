@@ -2,11 +2,14 @@ with orders as (
     select *
     from {{ ref('fct_orders') }}
 ),
+
 customers as (
     select *
     from {{ ref('dim_customers') }}
 )
-select o.order_id,
+
+select
+    o.order_id,
     o.customer_id,
     o.order_status,
     o.order_purchase_timestamp,
@@ -18,7 +21,8 @@ select o.order_id,
     c.city as customer_city,
     c.state_code as customer_state_code,
     c.state_name as customer_state_name
-from orders o
-    join customers c on o.customer_id = c.customer_id
+from orders as o
+inner join customers as c on
+    o.customer_id = c.customer_id
     and o.order_purchase_timestamp >= c.valid_from
     and o.order_purchase_timestamp <= c.valid_to
