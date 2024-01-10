@@ -47,6 +47,10 @@ docs:
     just docs-gen
     just serve
 
+# Debug connections
+debug:
+    dbt debug
+
 ################# DQ REPORT ####################
 
 # Generate DQ report
