@@ -13,6 +13,17 @@ sde_dbt_tutorial:
       pass: password1234
       dbname: dbt
       schema: warehouse
+
+    prod:
+      type: postgres
+      threads: 20
+      host: localhost
+      port: 5433
+      user: dbt
+      pass: password1234
+      dbname: prod_dbt
+      schema: warehouse 
+
 elementary:
   outputs:
     default:

@@ -2,7 +2,6 @@
 
 {{
     config(
-      target_database='dbt',
       target_schema='snapshots',
       unique_key='customer_id',
 

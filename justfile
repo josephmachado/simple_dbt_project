@@ -81,10 +81,10 @@ lint-format:
     just lint-yml
 
 prod-run:
-    just deps
-    just snapshot
-    just run-sde
-    just test
+    dbt deps --target prod
+    dbt snapshot --target prod
+    dbt run --select sde_dbt_tutorial --target prod
+    dbt test --target prod
 
 ci:
     just lint-format
