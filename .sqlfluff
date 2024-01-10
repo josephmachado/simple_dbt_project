@@ -1,0 +1,19 @@
+[sqlfluff]
+templater = dbt
+
+[sqlfluff:templater:dbt]
+project_dir = ./sde_dbt_tutorial
+profiles_dir = ./sde_dbt_tutorial
+
+
+[sqlfluff:templater:jinja]
+apply_dbt_builtins = True
+
+[sqlfluff:templater:jinja:macros]
+# Macros provided as builtins for dbt projects
+dbt_ref = {% macro ref(model_ref) %}{{model_ref}}{% endmacro %}
+dbt_source = {% macro source(source_name, table) %}{{source_name}}_{{table}}{% endmacro %}
+dbt_config = {% macro config() %}{% for k in kwargs %}{% endfor %}{% endmacro %}
+dbt_var = {% macro var(variable, default='') %}item{% endmacro %}
+dbt_is_incremental = {% macro is_incremental() %}True{% endmacro %}
+

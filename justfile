@@ -60,7 +60,7 @@ lint-sql:
     sqlfluff lint sde_dbt_tutorial/models --dialect postgres
 
 format-sql:
-    sqlfluff fix sde_dbt_tutorial/models --dialect postgres
+    sqlfluff fix sde_dbt_tutorial/models --dialect postgres --show-lint-violations
 
 lint-yml:
     yamllint sde_dbt_tutorial/models sde_dbt_tutorial/snapshots sde_dbt_tutorial/dbt_project.yml sde_dbt_tutorial/packages.yml sde_dbt_tutorial/profiles.yml
