@@ -9,9 +9,12 @@ config-version: 2
 # This setting configures which "profile" dbt uses for this project.
 profile: sde_dbt_tutorial
 
-# These configurations specify where dbt should look for different types of files.
-# The `model-paths` config, for example, states that models in this project can be
-# found in the "models/" directory. You probably won't need to change these!
+# These configurations specify where dbt should look
+# for different types of files.
+# The `model-paths` config, for example, states that
+# models in this project can be
+# found in the "models/" directory. You probably won't
+# need to change these!
 model-paths: [models]
 analysis-paths: [analysis]
 test-paths: [tests]
@@ -25,14 +28,15 @@ clean-targets:  # directories to be removed by `dbt clean`
 # Configuring models
 models:
   sde_dbt_tutorial:
-        # Applies to all files under models/marts/core/
+    # Applies to all files under models/marts/core/
     marts:
       core:
         materialized: table
 
-    ## see docs: https://docs.elementary-data.com/
+  ## see docs: https://docs.elementary-data.com/
   elementary:
-    ## elementary models will be created in the schema '<your_schema>_elementary'
+    ## elementary models will be
+    ## created in the schema '<your_schema>_elementary'
     +schema: elementary
     ## To disable elementary for dev, uncomment this:
     # enabled: "{{ target.name in ['prod','analytics'] }}"

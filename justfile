@@ -1,4 +1,4 @@
-################ ENVIRONMENT ###################
+################ ENVIRONMENT SETUP ###################
 # create a virtual env
 create-venv:
     python3 -m venv venv
@@ -64,14 +64,21 @@ format-sql:
     sqlfluff fix sde_dbt_tutorial/models --dialect postgres
 
 lint-yml:
-    yamllint sde_dbt_tutorial
+    yamllint sde_dbt_tutorial/models sde_dbt_tutorial/snapshots sde_dbt_tutorial/dbt_project.yml sde_dbt_tutorial/packages.yml sde_dbt_tutorial/profiles.yml
 
 format-yml:
-    yamlfix sde_dbt_tutorial
+    yamlfix sde_dbt_tutorial/models
 
 ################## WORKFLOW COMMANDS ###########
 
+lint-format:
+    just format-sql
+    just lint-sql
+    just format-yml
+    just lint-yml
+
 ci:
+    just lint-format
     just deps
     just snapshot
     just run-sde
