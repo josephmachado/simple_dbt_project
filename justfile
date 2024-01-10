@@ -12,6 +12,13 @@ deactivate:
     deactivate
 
 ################ DBT COMMANDS ###################
+# These env variables tell dbt which directory to run the dbt commands from
+
+export DBT_PROFILES_DIR := (`PWD` + "/sde_dbt_tutorial")
+export DBT_PROJECT_DIR := (`PWD` + "/sde_dbt_tutorial")
+
+foo:
+    echo $DBT_PROFILES_DIR
 # Download dependencies
 deps:
     dbt deps
@@ -19,7 +26,7 @@ deps:
 # Run Snapshot
 snapshot:
     dbt snapshot
-
+    
 # Run sde_dbt_tutorial models
 run-sde:
     dbt run --select sde_dbt_tutorial
@@ -38,8 +45,8 @@ serve:
 
 # Generate and serve dbt docs
 docs:
-    docs-gen
-    serve
+    just docs-gen
+    just serve
 
 ################# DQ REPORT ####################
 
@@ -50,11 +57,17 @@ dq-report:
 
 ################## LINT & FORMATTING ###########
 
-lint:
+lint-sql:
     sqlfluff lint sde_dbt_tutorial/models --dialect postgres
 
-format:
+format-sql:
     sqlfluff fix sde_dbt_tutorial/models --dialect postgres
+
+lint-yml:
+    yamllint sde_dbt_tutorial
+
+format-yml:
+    yamlfix sde_dbt_tutorial
 
 ################## WORKFLOW COMMANDS ###########
 

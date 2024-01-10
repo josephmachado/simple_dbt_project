@@ -100,4 +100,5 @@ tqdm==4.66.1
 typing_extensions==4.9.0
 urllib3==1.26.18
 yamllint==1.33.0
+yamlfix==1.16.0
 zipp==3.17.0
