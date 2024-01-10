@@ -10,4 +10,4 @@ SELECT
 FROM
     {{ ref('customer_orders') }}
 GROUP BY
-    1;
+    1
