@@ -13,7 +13,6 @@ deactivate:
 
 ################ DBT COMMANDS ###################
 # These env variables tell dbt which directory to run the dbt commands from
-
 export DBT_PROFILES_DIR := (`PWD` + "/sde_dbt_tutorial")
 export DBT_PROJECT_DIR := (`PWD` + "/sde_dbt_tutorial")
 
@@ -77,12 +76,15 @@ lint-format:
     just format-yml
     just lint-yml
 
-ci:
-    just lint-format
+prod-run:
     just deps
     just snapshot
     just run-sde
     just test
+
+ci:
+    just lint-format
+    just prod-run
 
 ################## CONNECTION ##################
 
@@ -91,8 +93,18 @@ up:
 
 warehouse:
     just up 
-    sleep 10
+    sleep 5
     PGPASSWORD=password1234 pgcli -h localhost -U dbt -p 5432 -d dbt   
+
+stakeholder:
+    just up
+    sleep 5
+    PGPASSWORD=password1234 pgcli -h localhost -U stakeholder -p 5432 -d dbt   
 
 down:
 	docker compose down 
+
+restart:
+    rm -rf /raw_data/*
+    just down
+    just up

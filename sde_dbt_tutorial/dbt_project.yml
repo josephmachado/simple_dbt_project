@@ -32,6 +32,10 @@ models:
     marts:
       core:
         materialized: table
+      marketing:
+        materialized: view
+        +grants:
+          select: ['stakeholder']
 
   ## see docs: https://docs.elementary-data.com/
   elementary:
