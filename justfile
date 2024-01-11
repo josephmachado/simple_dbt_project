@@ -38,8 +38,8 @@ test-warehouse:
     dbt test --exclude "source:*"
 
 test:
-    test-raw
-    test-warehouse
+    just test-raw
+    just test-warehouse
 
 # generate dbt docs
 docs-gen:
