@@ -48,5 +48,5 @@ models:
 vars:
   data_diff:
     prod_database: prod_dbt  # default database for the prod target
-    prod_schema: warehouse  # default schema for the prod target 
+    prod_schema: warehouse  # default schema for the prod target
     prod_custom_schema: <custom_schema>

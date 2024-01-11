@@ -54,10 +54,11 @@ debug:
 ################# DQ REPORT ####################
 
 # Generate elementary tables
+elem-tables:
+    dbt run --select elementary
 
 # Generate DQ report
 dq-report:
-    dbt run --select elementary
     edr report
 
 ################## LINT & FORMATTING ###########
@@ -86,6 +87,7 @@ dev-run:
     just deps
     just snapshot
     just run-sde
+    just elem-tables
     just test
 
 prod-run:
