@@ -31,8 +31,15 @@ run-sde:
     dbt run --select sde_dbt_tutorial
 
 # Test
+test-raw:
+    dbt test --select "source:*"
+
+test-warehouse:
+    dbt test --exclude "source:*"
+
 test:
-    dbt test
+    test-raw
+    test-warehouse
 
 # generate dbt docs
 docs-gen:
@@ -85,16 +92,18 @@ lint-format:
 
 dev-run:
     just deps
+    just elem-tables
+    just test-raw
     just snapshot
     just run-sde
-    just elem-tables
-    just test
+    just test-warehouse
 
 prod-run:
     dbt deps --target prod
+    dbt test --target prod --select "source:*"
     dbt snapshot --target prod
     dbt run --select sde_dbt_tutorial --target prod
-    dbt test --target prod
+    dbt test --target prod --exclude "source:*"
 
 ci:
     just lint-format

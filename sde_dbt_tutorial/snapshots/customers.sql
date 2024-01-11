@@ -10,6 +10,6 @@
     )
 }}
 
-select * from {{ source('warehouse', 'customers') }}
+select * from {{ source('raw_layer', 'customers') }}
 
 {% endsnapshot %}
