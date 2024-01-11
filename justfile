@@ -53,6 +53,8 @@ debug:
 
 ################# DQ REPORT ####################
 
+# Generate elementary tables
+
 # Generate DQ report
 dq-report:
     dbt run --select elementary
@@ -109,7 +111,7 @@ warehouse:
 stakeholder:
     just up
     sleep 5
-    PGPASSWORD=password1234 pgcli -h localhost -U stakeholder -p 5432 -d prod_dbt -p 5433
+    PGPASSWORD=password1234 pgcli -h localhost -U stakeholder -p 5432 -d dbt
 
 down:
 	docker compose down 
