@@ -22,7 +22,7 @@ sde_dbt_tutorial:
       user: dbt
       pass: password1234
       dbname: prod_dbt
-      schema: warehouse 
+      schema: warehouse
 
 elementary:
   outputs:

@@ -80,6 +80,12 @@ lint-format:
     just format-yml
     just lint-yml
 
+dev-run:
+    just deps
+    just snapshot
+    just run-sde
+    just test
+
 prod-run:
     dbt deps --target prod
     dbt snapshot --target prod
@@ -88,7 +94,7 @@ prod-run:
 
 ci:
     just lint-format
-    just prod-run
+    just dev-run
 
 ################## CONNECTION ##################
 
@@ -103,7 +109,7 @@ warehouse:
 stakeholder:
     just up
     sleep 5
-    PGPASSWORD=password1234 pgcli -h localhost -U stakeholder -p 5432 -d dbt   
+    PGPASSWORD=password1234 pgcli -h localhost -U stakeholder -p 5432 -d prod_dbt -p 5433
 
 down:
 	docker compose down 
