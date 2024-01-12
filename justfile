@@ -92,7 +92,6 @@ lint-format:
 
 dev-run:
     just deps
-    just elem-tables
     just test-raw
     just snapshot
     just run-sde
@@ -112,7 +111,7 @@ ci:
 ################## CONNECTION ##################
 
 up:
-	docker compose up --build -d
+	docker compose up --build -d && just elem-tables
 
 warehouse:
     just up 
