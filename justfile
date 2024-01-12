@@ -114,13 +114,9 @@ up:
 	docker compose up --build -d && just elem-tables
 
 warehouse:
-    just up 
-    sleep 5
     PGPASSWORD=password1234 pgcli -h localhost -U dbt -p 5432 -d dbt   
 
 stakeholder:
-    just up
-    sleep 5
     PGPASSWORD=password1234 pgcli -h localhost -U stakeholder -p 5432 -d dbt
 
 down:
