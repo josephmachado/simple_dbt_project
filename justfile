@@ -64,6 +64,9 @@ debug:
 elem-tables:
     dbt run --select elementary
 
+elem-tables-prod:
+    dbt run --select elementary --target prod
+
 # Generate DQ report
 dq-report:
     edr report
