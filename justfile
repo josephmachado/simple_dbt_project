@@ -58,6 +58,9 @@ docs:
 debug:
     dbt debug
 
+check-orphan-tests:
+    python3 check_orphans.py 
+
 ################# DQ REPORT ####################
 
 # Generate elementary tables
@@ -98,6 +101,7 @@ dev-run:
     just test-raw
     just snapshot
     just run-sde
+    just check-orphan-tests
     just test-warehouse
 
 prod-run:
@@ -106,6 +110,7 @@ prod-run:
     dbt test --target prod --select "source:*"
     dbt snapshot --target prod
     dbt run --select sde_dbt_tutorial --target prod
+    just check-orphan-tests
     dbt test --target prod --exclude "source:*"
 
 ci:

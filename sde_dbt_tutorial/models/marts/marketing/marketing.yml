@@ -46,3 +46,7 @@ models:
           row_condition: order_year > 2018
       - elementary.exposure_schema_validity:
           tags: [elementary]
+  - name: non_existent_table
+    columns:
+      - name: non_existent
+        tests: [unique]
