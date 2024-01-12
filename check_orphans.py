@@ -20,5 +20,8 @@ for dbt_test in dbt_tests:
         == 0
     ):
         logging.warning(
-            f"################# The test {dbt_test} is an orphaned test (no model to run this test on) please remove it! #######################"
+            f"""
+            ####################################################### \n
+            The test {dbt_test} is an orphaned test (no model to run this test on) please remove it! \n
+            ####################################################### \n"""
         )

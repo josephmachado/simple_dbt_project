@@ -105,7 +105,6 @@ dev-run:
     just test-warehouse
 
 prod-run:
-    just elem-tables-prod
     dbt deps --target prod
     dbt test --target prod --select "source:*"
     dbt snapshot --target prod
@@ -120,7 +119,7 @@ ci:
 ################## CONNECTION ##################
 
 up:
-	docker compose up --build -d && just elem-tables
+	docker compose up --build -d && just elem-tables && just elem-tables-prod
 
 warehouse:
     PGPASSWORD=password1234 pgcli -h localhost -U dbt -p 5432 -d dbt   
