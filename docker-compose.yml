@@ -20,27 +20,6 @@ services:
     networks:
       - dbt_project_network
 
-  prod_postgres:
-    image: postgres:16
-    container_name: prod_postgres
-    environment:
-      POSTGRES_USER: dbt
-      POSTGRES_PASSWORD: password1234
-      POSTGRES_DB: prod_dbt
-    volumes:
-      - ./raw_data:/input_data
-      - ./temp:/temp
-      - ./warehouse_setup:/docker-entrypoint-initdb.d
-    healthcheck:
-      test: [ "CMD", "pg_isready", "-U", "airflow" ]
-      interval: 5s
-      retries: 5
-    restart: always
-    ports:
-      - "5433:5432"
-    networks:
-      - dbt_project_network
-
 networks:
   dbt_project_network:
     name: dbt_project_network

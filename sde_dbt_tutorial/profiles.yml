@@ -12,16 +12,16 @@ sde_dbt_tutorial:
       user: dbt
       pass: password1234
       dbname: dbt
-      schema: warehouse
+      schema: jkm_warehouse
 
     prod:
       type: postgres
       threads: 20
       host: localhost
-      port: 5433
+      port: 5432
       user: dbt
       pass: password1234
-      dbname: prod_dbt
+      dbname: dbt
       schema: warehouse
 
 elementary:

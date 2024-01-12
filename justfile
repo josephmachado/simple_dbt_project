@@ -101,6 +101,7 @@ dev-run:
     just test-warehouse
 
 prod-run:
+    just elem-tables-prod
     dbt deps --target prod
     dbt test --target prod --select "source:*"
     dbt snapshot --target prod
