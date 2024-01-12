@@ -17,6 +17,15 @@ models:
                 - processing
                 - canceled
                 - unavailable
+    tests:
+      - elementary.volume_anomalies:
+          timestamp_column: order_purchase_timestamp
+          time_bucket:
+            period: hour
+            count: 1
+          tags: [elementary]
+          config:
+            severity: error
   - name: order_status_pivot
     columns:
       - name: order_year
