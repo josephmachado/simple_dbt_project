@@ -19,9 +19,12 @@ models:
                 - unavailable
     tests:
       - elementary.volume_anomalies:
+          training_period:
+            period: day
+            count: 3000
           timestamp_column: order_purchase_timestamp
           time_bucket:
-            period: hour
+            period: day
             count: 1
           tags: [elementary]
           config:
