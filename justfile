@@ -118,8 +118,21 @@ ci:
 
 ################## CONNECTION ##################
 
+start-db:
+    docker run -d \
+        --name postgres \
+        -e POSTGRES_USER=dbt \
+        -e POSTGRES_PASSWORD=password1234 \
+        -e POSTGRES_DB=dbt \
+        -v $(pwd)/raw_data:/input_data \
+        -v $(pwd)/warehouse_setup:/docker-entrypoint-initdb.d \
+        -p 5432:5432 \
+        postgres:16
+
 up:
-	docker compose up --build -d && just elem-tables && just elem-tables-prod
+    just start-db
+    just elem-tables
+    just elem-tables-prod
 
 warehouse:
     PGPASSWORD=password1234 pgcli -h localhost -U dbt -p 5432 -d dbt   
@@ -128,7 +141,7 @@ stakeholder:
     PGPASSWORD=password1234 pgcli -h localhost -U stakeholder -p 5432 -d dbt
 
 down:
-	docker compose down 
+	docker stop postgres && docker rm postgres
 
 restart:
     rm -rf /raw_data/*
