@@ -18,6 +18,10 @@ export DBT_PROJECT_DIR := (`PWD` + "/sde_dbt_tutorial")
 
 foo:
     echo $DBT_PROFILES_DIR
+
+bar:
+    echo $DBT_PROJECT_DIR
+
 # Download dependencies
 deps:
     dbt deps

@@ -84,3 +84,6 @@ select * from warehouse.customer_orders limit 3;
 ```bash
 make down
 ```
+
+chmod u+x .venv/bin/activate
+source .venv/bin/activate 
