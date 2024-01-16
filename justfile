@@ -102,7 +102,6 @@ lint-format:
     just lint-yml
 
 dev-run:
-    just deps
     just test-raw
     just snapshot
     just run-sde
@@ -110,7 +109,6 @@ dev-run:
     just test-warehouse
 
 prod-run:
-    dbt deps --target prod
     dbt test --target prod --select "source:*"
     dbt snapshot --target prod
     dbt run --select sde_dbt_tutorial --target prod
@@ -136,6 +134,7 @@ start-db:
 
 up:
     just start-db
+    just deps
     just elem-tables
     just elem-tables-prod
 

@@ -85,8 +85,6 @@ select * from warehouse.customer_orders limit 3;
 make down
 ```
 
-poetry init
-poetry add dbt-core
-poetry add 
-chmod u+x .venv/bin/activate
-source .venv/bin/activate 
+just create-venv
+source .venv/bin/activate
+deactivate
