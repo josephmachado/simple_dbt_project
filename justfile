@@ -4,11 +4,11 @@ create-venv:
     python3 -m venv venv
 
 # activate virtual env
-activate-venv:
-    . venv/bin/activate
+enter-venv:
+    source venv/bin/activate
 
 # Deactivate virtual env
-deactivate:
+exit-venv:
     deactivate
 
 ################ DBT COMMANDS ###################
