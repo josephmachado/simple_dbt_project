@@ -3,14 +3,6 @@
 create-venv:
     rm -rf .venv && poetry config virtualenvs.in-project true && poetry install --no-root
 
-# activate virtual env
-enter-venv:
-    source .venv/bin/activate
-
-# Deactivate virtual env
-exit-venv:
-    deactivate
-
 ################ DBT COMMANDS ###################
 # These env variables tell dbt which directory to run the dbt commands from
 # !!!! THE ENV VARIABLE MAY NEED TO BE CHANGED FOR WINDOWS !!!!!!
@@ -74,6 +66,13 @@ elem-tables:
 
 elem-tables-prod:
     dbt run --select elementary --target prod
+
+# run elementary tests
+elem-test:
+    dbt test --select elementary
+
+elem-test-prod:
+    dbt test --select elementary --target prod
 
 # Generate DQ report
 dq-report:
