@@ -44,4 +44,3 @@ models:
     +schema: elementary
     ## To disable elementary for dev, uncomment this:
     # enabled: "{{ target.name in ['prod','analytics'] }}"
-
