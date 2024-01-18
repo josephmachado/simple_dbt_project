@@ -45,7 +45,3 @@ models:
     ## To disable elementary for dev, uncomment this:
     # enabled: "{{ target.name in ['prod','analytics'] }}"
 
-vars:
-  data_diff:
-    prod_database: dbt  # default database for the prod target
-    prod_schema: warehouse  # default schema for the prod target

@@ -9,10 +9,10 @@ create-venv:
 export DBT_PROFILES_DIR := (`PWD` + "/sde_dbt_tutorial")
 export DBT_PROJECT_DIR := (`PWD` + "/sde_dbt_tutorial")
 
-foo:
+profile-dir:
     echo $DBT_PROFILES_DIR
 
-bar:
+project-dir:
     echo $DBT_PROJECT_DIR
 
 # Download dependencies
