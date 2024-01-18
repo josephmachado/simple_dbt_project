@@ -148,5 +148,6 @@ down:
 
 restart:
     rm -rf /raw_data/*
+    rm -rf ./sde_dbt_tutorial/target
     just down
     just up
