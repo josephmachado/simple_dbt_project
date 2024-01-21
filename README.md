@@ -129,6 +129,15 @@ add: image
 
 **Note**: There are more dbt tools & process improvements explained at https://www.startdataengineering.com/post/uplevel-dbt-workflow/
 
+## Auto run linting & checks locally before opening a PR to save on CI costs
+
+```bash
+echo -e '
+#!/bin/sh
+just ci
+' > .git/hooks/pre-commit
+chmod ug+x .git/hooks/*
+```
 
 # Shutdown
 
