@@ -129,7 +129,7 @@ add: image
 
 **Note**: There are more dbt tools & process improvements explained at https://www.startdataengineering.com/post/uplevel-dbt-workflow/
 
-## Auto run linting & checks locally before opening a PR to save on CI costs
+## Autorun linting & checks locally before opening a PR to save on CI costs
 
 ```bash
 echo -e '
