@@ -68,7 +68,7 @@ just warehouse
 You will be logged into your warehouse, here use the below command:
 
 ```sql
-COPY warehouse.customers(customer_id, zipcode, city, state_code, datetime_created, datetime_updated) FROM '/input_data/customer_new.csv' DELIMITER ',' CSV HEADER;
+COPY raw_layer.customers(customer_id, zipcode, city, state_code, datetime_created, datetime_updated) FROM '/input_data/customer_new.csv' DELIMITER ',' CSV HEADER;
 \q
 ```
 
@@ -85,7 +85,7 @@ just warehouse
 ```
 
 ```sql
-select * from warehouse.customer_orders limit 3;
+select * from your_name_warehouse.customer_orders limit 3;
 \q
 ```
 
