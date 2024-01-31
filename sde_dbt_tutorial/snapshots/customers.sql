@@ -2,7 +2,6 @@
 
 {{
     config(
-      target_database='dbt',
       target_schema='snapshots',
       unique_key='customer_id',
 
@@ -11,6 +10,6 @@
     )
 }}
 
-select * from {{ source('warehouse', 'customers') }}
+select * from {{ source('raw_layer', 'customers') }}
 
 {% endsnapshot %}

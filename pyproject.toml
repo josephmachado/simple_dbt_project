@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "simple-dbt-project"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+dbt-core = "^1.7.4"
+sqlfluff = "^2.3.5"
+sqlfluff-templater-dbt = "^2.3.5"
+yamllint = "^1.33.0"
+yamlfix = "^1.16.0"
+data-diff = {extras = ["postgres"], version = "^0.10.1"}
+dbt-postgres = "^1.7.4"
+elementary-data = "^0.13.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
