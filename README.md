@@ -21,6 +21,10 @@ Clone the git repo and switch to the `uplevel-workflow` branch.
 ```bash
 git clone https://github.com/josephmachado/simple_dbt_project.git
 cd simple_dbt_project
+
+# Set dbt env variables to tell dbt where the profiles.yml and dbt_project.yml files are
+export DBT_PROFILES_DIR=$(just profile-dir)
+export DBT_PROJECT_DIR=$(just project-dir)
 ```
 
 **Note**: All the just commands are avaialble in the [justfile](./justfile)
