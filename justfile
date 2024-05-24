@@ -144,7 +144,8 @@ stakeholder:
     PGPASSWORD=password1234 pgcli -h localhost -U stakeholder -p 5432 -d dbt
 
 down:
-	docker stop postgres && docker rm postgres
+    docker ps -q -f name=postgres | grep -q . && docker stop postgres && docker rm postgres
+
 
 restart:
     rm -rf /raw_data/*
