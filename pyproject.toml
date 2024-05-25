@@ -14,8 +14,8 @@ yamllint = "^1.33.0"
 yamlfix = "^1.16.0"
 data-diff = {extras = ["postgres"], version = "^0.10.1"}
 dbt-postgres = "^1.7.4"
-elementary-data = "^0.13.2"
 dbt-duckdb = "^1.8.0"
+duckdb = "^0.10.3"
 
 
 [build-system]
