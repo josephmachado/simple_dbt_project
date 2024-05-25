@@ -1,0 +1,52 @@
+---
+version: 2
+models:
+  - name: customer_orders
+    columns:
+      - name: customer_id
+        tests: [not_null]
+      - name: order_id
+        tests: [unique]
+      - name: order_status
+        tests:
+          - accepted_values:
+              values:
+                - delivered
+                - invoiced
+                - shipped
+                - processing
+                - canceled
+                - unavailable
+    tests:
+      - elementary.volume_anomalies:
+          training_period:
+            period: day
+            count: 3000
+          timestamp_column: order_purchase_timestamp
+          time_bucket:
+            period: day
+            count: 1
+          tags: [elementary]
+          config:
+            severity: error
+  - name: order_status_pivot
+    columns:
+      - name: order_year
+      - name: delivered
+      - name: shipped
+      - name: unavailable
+      - name: canceled
+      - name: processing
+      - name: invoiced
+    tests:
+      - dbt_expectations.expect_column_pair_values_A_to_be_greater_than_B:
+          column_A: delivered
+          column_B: invoiced
+          or_equal: false
+          row_condition: order_year > 2018
+      - elementary.exposure_schema_validity:
+          tags: [elementary]
+  - name: non_existent_table
+    columns:
+      - name: non_existent
+        tests: [unique]

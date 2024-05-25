@@ -1,0 +1,18 @@
+---
+version: 2
+exposures:
+  - name: order_status_pivot
+    label: Order Status Pivot
+    type: dashboard
+    maturity: high
+    url: https://your.bi.tool/dashboards/2
+    description: >
+      Shows year distribution of order by status
+    depends_on: [ref('order_status_pivot')]
+    owner:
+      name: John Reese
+      email: john.reese@nycsubway.com
+    meta:
+      referenced_columns:
+        - column_name: order_year
+          data_type: numeric

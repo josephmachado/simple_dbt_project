@@ -1,0 +1,39 @@
+---
+config:
+  send_anonymous_usage_stats: false
+sde_dbt_tutorial:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      threads: 20
+      host: localhost
+      port: 5432
+      user: dbt
+      pass: password1234
+      dbname: dbt
+      schema: your_name_warehouse
+
+    prod:
+      type: postgres
+      threads: 20
+      host: localhost
+      port: 5432
+      user: dbt
+      pass: password1234
+      dbname: dbt
+      schema: warehouse
+
+elementary:
+  outputs:
+    default:
+      type: postgres
+      host: localhost
+      port: 5432
+      user: dbt
+      password: password1234
+      dbname: dbt
+      schema: your_name_warehouse_elementary
+      threads: 20
+      keepalives_idle: 0  # default 0 seconds
+      connect_timeout: 10  # default 10 seconds

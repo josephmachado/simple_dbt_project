@@ -4,16 +4,6 @@ create-venv:
     rm -rf .venv && poetry config virtualenvs.in-project true && poetry install --no-root
 
 ################ DBT COMMANDS ###################
-# These env variables tell dbt which directory to run the dbt commands from
-# !!!! THE ENV VARIABLE MAY NEED TO BE CHANGED FOR WINDOWS !!!!!!
-export DBT_PROFILES_DIR := (`PWD` + "/sde_dbt_tutorial")
-export DBT_PROJECT_DIR := (`PWD` + "/sde_dbt_tutorial")
-
-profile-dir:
-    echo $DBT_PROFILES_DIR
-
-project-dir:
-    echo $DBT_PROJECT_DIR
 
 # Download dependencies
 deps:

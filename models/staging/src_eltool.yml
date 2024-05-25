@@ -1,0 +1,29 @@
+---
+version: 2
+sources:
+  - name: raw_layer
+    description: Data from application database, brought in by an EL process.
+    tables:
+      - name: customers
+        config:
+          tags: [raw_layer]
+        columns:
+          - name: customer_id
+            tests: [not_null]
+        tests:
+          - elementary.schema_changes:
+              tags: [elementary]
+              config:
+                severity: error
+      - name: orders
+        config:
+          tags: [raw_layer]
+        columns:
+          - name: order_id
+            tests: [not_null, unique]
+          - name: cust_id
+            tests:
+              - relationships:
+                  to: source('raw_layer', 'customers')
+                  field: customer_id
+      - name: state
