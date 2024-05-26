@@ -2,8 +2,8 @@
 templater = dbt
 
 [sqlfluff:templater:dbt]
-project_dir = ./sde_dbt_tutorial
-profiles_dir = ./sde_dbt_tutorial
+project_dir = ./
+profiles_dir = ./
 
 
 [sqlfluff:templater:jinja]

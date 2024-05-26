@@ -2,7 +2,7 @@
 version: 2
 sources:
   - name: raw_layer
-    meta: 
+    meta:
       external_location: ./raw_data/{name}.csv
     description: Data from application database, brought in by an EL process.
     tables:

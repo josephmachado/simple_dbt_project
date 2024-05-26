@@ -45,22 +45,19 @@ docs:
 debug:
     dbt debug
 
-check-orphan-tests:
-    python3 check_orphans.py 
-
 ################## LINT & FORMATTING ###########
 
 lint-sql:
-    sqlfluff lint sde_dbt_tutorial/models --dialect postgres
+    sqlfluff lint ./models --dialect postgres
 
 format-sql:
-    sqlfluff fix sde_dbt_tutorial/models --dialect postgres --show-lint-violations
+    sqlfluff fix ./models --dialect postgres --show-lint-violations
 
 lint-yml:
-    yamllint sde_dbt_tutorial/models sde_dbt_tutorial/snapshots sde_dbt_tutorial/dbt_project.yml sde_dbt_tutorial/packages.yml sde_dbt_tutorial/profiles.yml
+    yamllint ./models ./snapshots ./dbt_project.yml ./packages.yml ./profiles.yml
 
 format-yml:
-    yamlfix sde_dbt_tutorial/models
+    yamlfix ./models
 
 ################## WORKFLOW COMMANDS ###########
 
@@ -69,20 +66,6 @@ lint-format:
     just lint-sql
     just format-yml
     just lint-yml
-
-dev-run:
-    just test-raw
-    just snapshot
-    just run-sde
-    just check-orphan-tests
-    just test-warehouse
-
-prod-run:
-    dbt test --target prod --select "source:*"
-    dbt snapshot --target prod
-    dbt run --select sde_dbt_tutorial --target prod
-    just check-orphan-tests
-    dbt test --target prod --exclude "source:*"
 
 ci:
     just lint-format
@@ -94,10 +77,7 @@ up:
     just deps
 
 warehouse:
-    PGPASSWORD=password1234 pgcli -h localhost -U dbt -p 5432 -d dbt   
-
-stakeholder:
-    PGPASSWORD=password1234 pgcli -h localhost -U stakeholder -p 5432 -d dbt
+    ./duckdb
 
 restart:
     rm -rf /raw_data/*
