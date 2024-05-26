@@ -9,3 +9,5 @@ package-lock.yml
 edr_target/
 venv/
 .venv/
+
+*.duckdb
