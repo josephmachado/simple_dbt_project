@@ -80,8 +80,7 @@ warehouse:
     ./duckdb
 
 restart:
-    rm -rf /raw_data/*
-    rm -rf ./sde_dbt_tutorial/target
+    rm -rf ./target
     rm -rf *.duckdb
     rm -rf dbt_packages
     dbt clean
