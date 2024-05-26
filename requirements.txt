@@ -27,7 +27,6 @@ dbt-semantic-interfaces==0.4.2
 diff_cover==8.0.2
 distro==1.9.0
 dsnparse==0.1.15
-elementary-data==0.13.2
 google-api-core==2.15.0
 google-auth==2.26.1
 google-cloud-core==2.4.1

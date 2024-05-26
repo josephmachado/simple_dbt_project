@@ -32,7 +32,6 @@ for dbt_model in dbt_models:
     if (
         len(dbt_model_node.get("refs", [])) == 0
         and len(dbt_model_node.get("sources", [])) == 0
-        and dbt_model_node.get("fqn", ["non-existent"])[0] != "elementary"
     ):
         logging.warning(
             f"""
