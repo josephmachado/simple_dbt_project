@@ -6,7 +6,7 @@ Repository for the following blogs
 
 ## Prerequisites
 
-1. [python](https://www.python.org/downloads/)
+1. [python ^3.11](https://www.python.org/downloads/)
 2. [poetry](https://python-poetry.org/docs/)
 3. [duckdb](https://duckdb.org/docs/installation/)
 5. [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
@@ -61,11 +61,16 @@ Since we are using duckdb and the base table is essentially data at ./raw_data/c
 ```bash
 # Remove header from ./raw_data/customers_new.csv
 # and append it to ./raw_data/customers.csv
-tail -n +2 ./raw_data/customers_new.csv >> ./raw_data/customers.csv
-# NOTE: Windows users may need to do this manually or via powershell as
+echo "" >> ./raw_data/customers.csv
+tail -n +2 ./raw_data/customer_new.csv >> ./raw_data/customers.csv
 
+# NOTE: Windows users may need to do this manually or via powershell as
 # Read the CSV file, skip the first line, and output to a new file
-Get-Content -Path './raw_data/customers_new.csv' | Select-Object -Skip 1 | Set-Content -Path './raw_data/customers.csv'
+
+$newFilePath = './raw_data/customer_new.csv'
+$existingFilePath = './raw_data/customers.csv'
+Add-Content -Path $existingFilePath -Value "`n"
+Get-Content -Path './raw_data/customer_new.csv' | Select-Object -Skip 1 | Set-Content -Path './raw_data/customers.csv'
 ```
 
 Run snapshot and create models again.
@@ -81,7 +86,9 @@ just warehouse
 ```
 
 ```sql
-select * from your_name_warehouse.customer_orders limit 3;
+D .open dbt.duckdb
+
+select * from customer_orders limit 3;
 .exit
 ```
 
