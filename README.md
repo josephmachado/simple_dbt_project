@@ -54,17 +54,18 @@ dbt docs serve
 
 Go to http://localhost:8080 to see the dbt documentation (press ctrl+c). 
 
-Let's do some testing, Insert some data into source customer table(in our case the new_customer data is appended into customers.csv), to demonstrate dbt snapshots. From your terminal (after exiting dbt container) run the following command.
+Let's do some testing, Insert some data into source customer table(in our case the new_customer data is appended into customers.csv), to demonstrate dbt snapshots.
+
+Since we are using duckdb and the base table is essentially data at ./raw_data/customer.csv we have to append new data to this customer.csv file as shown below:
 
 ```bash
-just warehouse
-```
+# Remove header from ./raw_data/customers_new.csv
+# and append it to ./raw_data/customers.csv
+tail -n +2 ./raw_data/customers_new.csv >> ./raw_data/customers.csv
+# NOTE: Windows users may need to do this manually or via powershell as
 
-You will be logged into your warehouse, here use the below command:
-
-```sql
-COPY raw_layer.customers(customer_id, zipcode, city, state_code, datetime_created, datetime_updated) FROM '/input_data/customer_new.csv' DELIMITER ',' CSV HEADER;
-\q
+# Read the CSV file, skip the first line, and output to a new file
+Get-Content -Path './raw_data/customers_new.csv' | Select-Object -Skip 1 | Set-Content -Path './raw_data/customers.csv'
 ```
 
 Run snapshot and create models again.
@@ -81,8 +82,6 @@ just warehouse
 
 ```sql
 select * from your_name_warehouse.customer_orders limit 3;
-\q
+.exit
 ```
-
-**Note**: The following sections are for this article [Uplevel dbt(data build tool) workflow](https://www.startdataengineering.com/post/uplevel-dbt-workflow/)
 
