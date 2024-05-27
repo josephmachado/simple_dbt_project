@@ -45,36 +45,7 @@ docs:
 debug:
     dbt debug
 
-################## LINT & FORMATTING ###########
-
-lint-sql:
-    sqlfluff lint ./models --dialect postgres
-
-format-sql:
-    sqlfluff fix ./models --dialect postgres --show-lint-violations
-
-lint-yml:
-    yamllint ./models ./snapshots ./dbt_project.yml ./packages.yml ./profiles.yml
-
-format-yml:
-    yamlfix ./models
-
-################## WORKFLOW COMMANDS ###########
-
-lint-format:
-    just format-sql
-    just lint-sql
-    just format-yml
-    just lint-yml
-
-ci:
-    just lint-format
-    just dev-run
-
 ################## CONNECTION ##################
-
-up:
-    just deps
 
 warehouse:
     ./duckdb
@@ -84,4 +55,3 @@ restart:
     rm -rf *.duckdb
     rm -rf dbt_packages
     dbt clean
-    just up
