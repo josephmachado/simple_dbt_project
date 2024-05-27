@@ -6,7 +6,7 @@ authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.8"
 dbt-core = "^1.7.4"
 sqlfluff = "^2.3.5"
 sqlfluff-templater-dbt = "^2.3.5"
