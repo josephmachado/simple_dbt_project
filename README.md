@@ -19,7 +19,6 @@ Clone the git repo and switch to the `uplevel-workflow` branch.
 ```bash
 git clone https://github.com/josephmachado/simple_dbt_project.git
 cd simple_dbt_project
-export DBT_PROJECT_DIR=$(just project-dir)
 ```
 
 **Note**: All the just commands are avaialble in the [justfile](./justfile)
@@ -46,7 +45,7 @@ From your project terminal run the following commands.
 ```bash
 dbt deps
 dbt snapshot
-dbt run --select sde_dbt_tutorial
+dbt run 
 dbt test
 dbt docs generate
 dbt docs serve
@@ -75,8 +74,8 @@ Get-Content -Path './raw_data/customer_new.csv' | Select-Object -Skip 1 | Set-Co
 
 Run snapshot and create models again.
 ```bash
-dbt snapshot --select sde_dbt_tutorial
-dbt run --select sde_dbt_tutorial
+dbt snapshot 
+dbt run 
 ```
 
 From your terminal run the following command.
@@ -88,7 +87,11 @@ just warehouse
 ```sql
 D .open dbt.duckdb
 
-select * from customer_orders limit 3;
+-- You will see 2 rows for the same customer ud
+-- this is the SCD2 version
+select * 
+from snapshots.customers_snapshot 
+where customer_id = 82;
 .exit
 ```
 
