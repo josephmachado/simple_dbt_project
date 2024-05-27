@@ -6,7 +6,7 @@ Repository for the following blogs
 
 ## Prerequisites
 
-1. [python ^3.11](https://www.python.org/downloads/)
+1. [python ^3.8](https://www.python.org/downloads/)
 2. [poetry](https://python-poetry.org/docs/)
 3. [duckdb](https://duckdb.org/docs/installation/)
 5. [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
