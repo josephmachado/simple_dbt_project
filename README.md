@@ -6,11 +6,8 @@ Repository for the following blogs
 
 ## Prerequisites
 
-1. [python ^3.8](https://www.python.org/downloads/)
-2. [poetry](https://python-poetry.org/docs/)
-3. [duckdb](https://duckdb.org/docs/installation/)
-5. [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-6. [just](https://github.com/casey/just)
+1. [python ^3.11](https://www.python.org/downloads/)
+2. [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 In addition to the tools, you would also need to know what dbt is, you can learn about it here: [dbt tutorial](https://www.startdataengineering.com/post/dbt-data-build-tool-tutorial/).
 
@@ -21,28 +18,12 @@ git clone https://github.com/josephmachado/simple_dbt_project.git
 cd simple_dbt_project
 ```
 
-**Note**: All the just commands are avaialble in the [justfile](./justfile)
-
-## Create virtual environment and start postgres docker
-
-In your project terminal, create a virtual environment and activate it as shown below.
-
 ```bash
-just create-venv # uses poetry to install python modules in pyproject.ml
-source .venv/bin/activate
-```
-
-Start the postgres container (to be used as warehouse for development) with the following command.
-
-```bash
-just restart # clears up any existing container with the same name, starts a new postgres container and sets up elementary (a dbt package) table.
-```
-
-## Run dbt
-
-From your project terminal run the following commands.
-
-```bash
+# set up venv and run dbt
+python -m venv myenv
+source myenv/bin/activate
+pip install -r requirements.txt
+dbt clean
 dbt deps
 dbt snapshot
 dbt run 
@@ -73,6 +54,7 @@ Get-Content -Path './raw_data/customer_new.csv' | Select-Object -Skip 1 | Set-Co
 ```
 
 Run snapshot and create models again.
+
 ```bash
 dbt snapshot 
 dbt run 
@@ -81,12 +63,10 @@ dbt run
 From your terminal run the following command.
 
 ```bash
-just warehouse
+duckdb dbt.duckdb
 ```
 
 ```sql
-D .open dbt.duckdb
-
 -- You will see 2 rows for the same customer ud
 -- this is the SCD2 version
 select * 
