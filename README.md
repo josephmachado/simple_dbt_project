@@ -66,6 +66,13 @@ dbt snapshot
 dbt run 
 ```
 
+```bash
+# reset customers.csv
+head -n -5 ./raw_data/customers.csv > temp
+cat temp > ./raw_data/customers.csv 
+rm temp
+```
+
 Let's open a python REPL and check our data, as shown below:
 
 ```python
