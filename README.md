@@ -11,18 +11,28 @@ Repository for the following blogs
 
 In addition to the tools, you would also need to know what dbt is, you can learn about it here: [dbt tutorial](https://www.startdataengineering.com/post/dbt-data-build-tool-tutorial/).
 
-Clone the git repo and switch to the `uplevel-workflow` branch.
+Clone the git repo as shown below:
 
 ```bash
 git clone https://github.com/josephmachado/simple_dbt_project.git
 cd simple_dbt_project
 ```
 
+Setup python virtual environment as shown below:
+
 ```bash
+rm -rf myenv
 # set up venv and run dbt
 python -m venv myenv
 source myenv/bin/activate
 pip install -r requirements.txt
+```
+
+# Run dbt 
+
+Run dbt commands as shown below:
+
+```bash
 dbt clean
 dbt deps
 dbt snapshot
@@ -32,11 +42,13 @@ dbt docs generate
 dbt docs serve
 ```
 
-Go to http://localhost:8080 to see the dbt documentation (press ctrl+c). 
+Go to [http://localhost:8080](http://localhost:8080) to see the dbt documentation. If you are running this on GitHub CodeSpaces, follow [this section]() to expose port 8080 for access from your browser.
 
-Let's do some testing, Insert some data into source customer table(in our case the new_customer data is appended into customers.csv), to demonstrate dbt snapshots.
+Press Ctrl + c to stop the document server.
 
-Since we are using duckdb and the base table is essentially data at ./raw_data/customer.csv we have to append new data to this customer.csv file as shown below:
+# Create snapshots
+
+Let's do some testing, Insert some data into source customer table(in our case the new_customer data is appended into customers.csv), to demonstrate dbt snapshots. Since we are using duckdb and the base table is essentially data at [customer.csv](./raw_data/customer.csv) we have to append new data to this customer.csv file as shown below:
 
 ```bash
 # Remove header from ./raw_data/customers_new.csv
@@ -44,13 +56,7 @@ Since we are using duckdb and the base table is essentially data at ./raw_data/c
 echo "" >> ./raw_data/customers.csv
 tail -n +2 ./raw_data/customer_new.csv >> ./raw_data/customers.csv
 
-# NOTE: Windows users may need to do this manually or via powershell as
-# Read the CSV file, skip the first line, and output to a new file
-
-$newFilePath = './raw_data/customer_new.csv'
-$existingFilePath = './raw_data/customers.csv'
-Add-Content -Path $existingFilePath -Value "`n"
-Get-Content -Path './raw_data/customer_new.csv' | Select-Object -Skip 1 | Set-Content -Path './raw_data/customers.csv'
+# NOTE: Windows users need to do this manually or via powershell as
 ```
 
 Run snapshot and create models again.
@@ -60,18 +66,15 @@ dbt snapshot
 dbt run 
 ```
 
-From your terminal run the following command.
+Let's open a python REPL and check our data, as shown below:
 
-```bash
-duckdb dbt.duckdb
-```
-
-```sql
--- You will see 2 rows for the same customer ud
--- this is the SCD2 version
-select * 
-from snapshots.customers_snapshot 
-where customer_id = 82;
-.exit
+```python
+import duckdb
+con = duckdb.connect("dbt.duckdb")
+results = con.execute("select * from snapshots.customers_snapshot where customer_id = 82").fetchall()
+for row in results:
+    print(row)
+# NOTE: You will see 2 rows printed
+exit()
 ```
 
