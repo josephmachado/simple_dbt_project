@@ -20,7 +20,7 @@ cd simple_dbt_project
 
 ## Demo on CodeSpaces
 
-[dbt on codespaces demo](https://youtu.be/UEVuIKmx5X0)
+[![dbt on codespaces demo](https://img.youtube.com/vi/UEVuIKmx5X0/maxresdefault.jpg)](https://youtu.be/UEVuIKmx5X0)
 
 Setup python virtual environment as shown below:
 
