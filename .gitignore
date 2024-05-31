@@ -12,3 +12,4 @@ myenv/
 .venv/
 
 *.duckdb
+duckdb
