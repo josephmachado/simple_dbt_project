@@ -18,6 +18,10 @@ git clone https://github.com/josephmachado/simple_dbt_project.git
 cd simple_dbt_project
 ```
 
+## Demo on CodeSpaces
+
+![dbt on codespaces demo](./assets/dbtdemo.mpg)
+
 Setup python virtual environment as shown below:
 
 ```bash
