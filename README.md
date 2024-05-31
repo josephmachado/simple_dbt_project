@@ -22,10 +22,8 @@ cd simple_dbt_project
 
 Here is a demo of how to run this on CodeSpaces:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/UEVuIKmx5X0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![dbt on codespaces demo](https://img.youtube.com/vi/UEVuIKmx5X0/maxresdefault.jpg)](https://youtu.be/UEVuIKmx5X0)
 
-<!-- [![dbt on codespaces demo](https://img.youtube.com/vi/UEVuIKmx5X0/maxresdefault.jpg)](https://youtu.be/UEVuIKmx5X0)
--->
 Setup python virtual environment as shown below:
 
 ```bash
