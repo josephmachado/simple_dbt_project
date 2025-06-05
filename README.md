@@ -6,7 +6,7 @@ Repository for the following blogs
 
 ## Prerequisites
 
-1. [python ^3.11](https://www.python.org/downloads/)
+1. [uv](https://docs.astral.sh/uv/)
 2. [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 In addition to the tools, you would also need to know what dbt is, you can learn about it here: [dbt tutorial](https://www.startdataengineering.com/post/dbt-data-build-tool-tutorial/).
@@ -28,10 +28,10 @@ Setup python virtual environment as shown below:
 
 ```bash
 rm -rf myenv
-# set up venv and run dbt
-python -m venv myenv
-source myenv/bin/activate
-pip install -r requirements.txt
+uv python install 3.13
+uv venv --python 3.13
+source .venv/bin/activate
+uv pip install dbt duckdb dbt-duckdb
 ```
 
 # Run dbt 
