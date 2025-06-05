@@ -27,11 +27,11 @@ Here is a demo of how to run this on CodeSpaces:
 Setup python virtual environment as shown below:
 
 ```bash
-rm -rf myenv
+rm -rf .venv
 uv python install 3.13
 uv venv --python 3.13
+uv sync
 source .venv/bin/activate
-uv pip install dbt duckdb dbt-duckdb
 ```
 
 # Run dbt 
