@@ -7,5 +7,5 @@ sources:
       - name: raw_customer
       - name: raw_orders
       - name: raw_state
-      - name: order_status_code
+      - name: raw_clickstream
 

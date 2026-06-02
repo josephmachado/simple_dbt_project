@@ -26,6 +26,6 @@ select
   *,
   s.state_name 
   from customers as c
-inner join state as s on c.state_code = s.state_code
+left join state as s on c.state_code = s.state_code
 
 {% endsnapshot %}

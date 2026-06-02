@@ -1,0 +1,11 @@
+event_id,event_ts,user_id,session_id,event_type,page_url,device,browser
+101,2018-06-02 22:39:21,u_1032,s_60209,click,/account,desktop,edge
+102,2018-06-04 07:28:20,u_1039,s_90922,page_view,/search,mobile,safari
+103,2018-06-04 12:55:40,u_1059,s_96581,scroll,/checkout,desktop,chrome
+104,2018-06-04 23:56:38,u_1060,s_99635,logout,/products,mobile,chrome
+105,2018-06-10 15:33:16,u_1048,s_36224,scroll,/product/456,desktop,safari
+106,2018-06-11 03:55:14,u_1026,s_57517,click,/account,tablet,safari
+107,2018-06-11 13:32:15,u_1076,s_33281,scroll,/home,desktop,chrome
+108,2018-06-12 05:27:19,u_1040,s_62772,page_view,/cart,tablet,chrome
+109,2018-06-15 12:57:17,u_1059,s_16726,login,/product/123,desktop,safari
+110,2018-06-15 17:26:40,u_1075,s_38402,login,/search,tablet,safar

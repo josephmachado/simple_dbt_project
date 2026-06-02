@@ -6,6 +6,7 @@ files = {
     "raw_customer": "./raw_data/customer.csv",
     "raw_orders": "./raw_data/orders.csv",
     "raw_state": "./raw_data/state.csv",
+    "raw_clickstream": "./raw_data/clickstream.csv",
 }
 
 con.execute("CREATE SCHEMA IF NOT EXISTS raw")

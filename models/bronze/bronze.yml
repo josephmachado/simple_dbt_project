@@ -7,3 +7,4 @@ models:
         tests: [not_null]
   - name: bronze_orders
   - name: bronze_state
+  - name: bronze_clickstream
