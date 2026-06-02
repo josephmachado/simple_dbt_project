@@ -1,6 +1,6 @@
 with source as (
     select *
-    from {{ source('raw_layer', 'state') }}
+    from {{ source('raw', 'raw_state') }}
 ),
 
 renamed as (

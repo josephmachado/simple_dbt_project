@@ -28,13 +28,15 @@ target-path: target  # directory which will store compiled SQL files
 clean-targets:  # directories to be removed by `dbt clean`
   - target
   - dbt_packages
+  #
 # Configuring models
 models:
   sde_dbt_tutorial:
-    # Applies to all files under models/marts/core/
+    bronze:
+      +materialized: table
+    silver:
+      +materialized: table
     marts:
-      core:
-        materialized: table
       marketing:
-        materialized: view
+        +materialized: view
 
