@@ -41,6 +41,7 @@ Run dbt commands as shown below:
 ```bash
 dbt clean
 dbt deps
+dbt seed
 dbt run --select models/bronze
 dbt snapshot
 dbt run --select models/silver

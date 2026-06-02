@@ -1,0 +1,7 @@
+order_status,order_status_code
+shipped,SH
+invoiced,INV
+processing,PROC
+canceled,CXL
+unavailable,UNAV
+delivered,DEL
