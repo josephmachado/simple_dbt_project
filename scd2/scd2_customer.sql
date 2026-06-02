@@ -1,4 +1,4 @@
-{% snapshot customers_snapshot %}
+{% snapshot scd2_customer %}
 
 {{
     config(
@@ -7,9 +7,10 @@
 
       strategy='timestamp',
       updated_at='datetime_updated',
+      dbt_valid_to_current='date \'9999-12-31\''
     )
 }}
 
-select * from {{ source('raw', 'raw_customer') }}
+select * from {{ ref('bronze_customer') }}
 
 {% endsnapshot %}

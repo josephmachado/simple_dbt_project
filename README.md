@@ -28,8 +28,8 @@ Setup python virtual environment as shown below:
 
 ```bash
 rm -rf .venv
-uv python install 3.13
-uv venv --python 3.13
+uv python install 3.13.8
+uv venv --python 3.13.8
 uv sync
 source .venv/bin/activate
 ```
@@ -41,8 +41,10 @@ Run dbt commands as shown below:
 ```bash
 dbt clean
 dbt deps
+dbt run --select models/bronze
 dbt snapshot
-dbt run 
+dbt run --select models/silver
+dbt run --select models/gold
 dbt test
 dbt docs generate
 dbt docs serve

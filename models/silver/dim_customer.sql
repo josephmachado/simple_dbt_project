@@ -1,6 +1,6 @@
 with customers as (
     select *
-    from {{ ref('bronze_customer') }}
+    from {{ ref('scd2_customer') }}
 ),
 
 state as (
