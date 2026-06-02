@@ -39,6 +39,7 @@ source .venv/bin/activate
 Run dbt commands as shown below:
 
 ```bash
+rm *.duckdb
 uv run python extract_load_pipeline.py
 uv run dbt clean
 uv run dbt deps
@@ -70,16 +71,14 @@ Press Ctrl + c to stop the document server.
 
 Let's do some testing, Insert some data into source customer table(in our case the new_customer data is appended into customers.csv), to demonstrate dbt snapshots. Since we are using duckdb and the base table is essentially data at [customer.csv](./raw_data/customer.csv) we have to append new data to this customer.csv file as shown below:
 
-```bash
-uv run python load_new_data.py
-```
-
 Run snapshot and create models again.
 
 ```bash
+uv run python load_new_data.py
 uv run dbt run --select models/bronze 
 uv run dbt snapshot 
 uv run dbt run --select models/silver
+uv run dbt test
 ```
 
 ```bash
