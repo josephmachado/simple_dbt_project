@@ -1,4 +1,4 @@
-{% snapshot scd2_customer %}
+{% snapshot dim_customer %}
 
 {{
     config(
@@ -11,6 +11,21 @@
     )
 }}
 
+with customers as (
+
 select * from {{ ref('bronze_customer') }}
+
+),
+
+state as (
+    select *
+    from {{ ref('bronze_state') }}
+)
+
+select
+  *,
+  s.state_name 
+  from customers as c
+inner join state as s on c.state_code = s.state_code
 
 {% endsnapshot %}

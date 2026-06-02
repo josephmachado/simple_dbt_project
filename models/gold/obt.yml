@@ -10,11 +10,12 @@ models:
       - name: order_status
         tests:
           - accepted_values:
-              values:
-                - delivered
-                - invoiced
-                - shipped
-                - processing
-                - canceled
-                - unavailable
+              arguments:
+                values:
+                  - delivered
+                  - invoiced
+                  - shipped
+                  - processing
+                  - canceled
+                  - unavailable
 
