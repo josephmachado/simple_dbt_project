@@ -5,7 +5,7 @@ with orders as (
 
 customers as (
     select *
-    from {{ ref('dim_customers') }}
+    from {{ ref('dim_customer') }}
 )
 
 select

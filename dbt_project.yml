@@ -36,7 +36,7 @@ models:
       +materialized: table
     silver:
       +materialized: table
-    marts:
+    gold:
       marketing:
         +materialized: view
 

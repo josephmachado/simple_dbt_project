@@ -1,6 +1,6 @@
 with orders as (
     select *
-    from {{ ref('stg_eltool__orders') }}
+    from {{ ref('bronze_orders') }}
 )
 
 select * from orders

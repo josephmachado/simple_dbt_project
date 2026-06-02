@@ -1,11 +1,11 @@
 with customers as (
     select *
-    from {{ ref('stg_eltool__customers') }}
+    from {{ ref('bronze_customer') }}
 ),
 
 state as (
     select *
-    from {{ ref('stg_eltool__state') }}
+    from {{ ref('bronze_state') }}
 )
 
 select
