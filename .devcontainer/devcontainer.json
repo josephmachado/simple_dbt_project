@@ -6,7 +6,7 @@
       "version": "latest"
     }
   },
-  "postCreateCommand": "curl https://install.duckdb.org | sh && export PATH=\"/home/vscode/.duckdb/cli/latest:$PATH\" && echo 'export PATH=\"/home/vscode/.duckdb/cli/latest:$PATH\"' >> ~/.bashrc && uv sync"
+  "postCreateCommand": "curl https://install.duckdb.org | sh && export PATH=\"/home/vscode/.duckdb/cli/latest:$PATH\" && echo 'export PATH=\"/home/vscode/.duckdb/cli/latest:$PATH\"' >> ~/.bashrc && uv sync",
   "customizations": {
     "vscode": {
       "extensions": [
