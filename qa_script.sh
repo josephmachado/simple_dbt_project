@@ -62,3 +62,10 @@ ok = dim == 2 and fct == 110
 print('CHECK PASSED' if ok else 'CHECK FAILED')
 sys.exit(0 if ok else 1)
 "
+
+echo "##############################################"
+echo "# Clean up"
+echo "##############################################"
+rm -f *.duckdb
+
+
