@@ -1,0 +1,21 @@
+---
+version: 2
+models:
+  - name: orders_obt
+    columns:
+      - name: customer_id
+        data_tests: [not_null]
+      - name: order_id
+        data_tests: [unique]
+      - name: order_status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - delivered
+                  - invoiced
+                  - shipped
+                  - processing
+                  - canceled
+                  - unavailable
+

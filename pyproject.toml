@@ -5,8 +5,9 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "dbt>=1.0.0.40.3",
-    "dbt-duckdb>=1.9.3",
-    "duckdb>=1.3.0",
-    "sqlfluff>=3.4.0",
+    "dbt-core>=1.11.11",
+    "dbt-duckdb>=1.10.1",
+    "duckdb>=1.5.3",
+    "sqlfluff>=4.2.1",
+    "sqlfluff-templater-dbt>=4.2.1",
 ]

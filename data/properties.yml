@@ -1,0 +1,20 @@
+version: 2
+
+seeds:
+  - name: order_status_code
+    description: "Lookup mapping order_status values to short status codes."
+    config:
+      column_types:
+        order_status: varchar
+        order_status_code: varchar
+    columns:
+      - name: order_status
+        description: "Human-readable order status from the source system."
+        tests:
+          - not_null
+          - unique
+      - name: order_status_code
+        description: "Short code for the order status (e.g. SH, INV, DEL)."
+        tests:
+          - not_null
+          - unique

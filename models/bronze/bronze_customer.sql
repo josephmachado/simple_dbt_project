@@ -1,6 +1,6 @@
 with source as (
     select *
-    from {{ ref('customers_snapshot') }}
+    from {{ source('raw', 'raw_customer') }}
 ),
 
 renamed as (
@@ -10,9 +10,7 @@ renamed as (
         city,
         state_code,
         datetime_created::timestamp as datetime_created,
-        datetime_updated::timestamp as datetime_updated,
-        dbt_valid_from,
-        dbt_valid_to
+        datetime_updated::timestamp as datetime_updated
     from source
 )
 

@@ -5,7 +5,7 @@ with orders as (
 
 customers as (
     select *
-    from {{ ref('dim_customers') }}
+    from {{ ref('dim_customer') }}
 )
 
 select
@@ -24,5 +24,5 @@ select
 from orders as o
 inner join customers as c on
     o.customer_id = c.customer_id
-    and o.order_purchase_timestamp >= c.valid_from
-    and o.order_purchase_timestamp <= c.valid_to
+    and o.order_purchase_timestamp >= c.dbt_valid_from
+    and o.order_purchase_timestamp <= c.dbt_valid_to

@@ -1,0 +1,28 @@
+{
+  "name": "dbt-duckdb",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/va-h/devcontainers-features/uv:1": {
+      "version": "latest"
+    }
+  },
+  "postCreateCommand": "curl https://install.duckdb.org | sh && export PATH=\"/home/vscode/.duckdb/cli/latest:$PATH\" && echo 'export PATH=\"/home/vscode/.duckdb/cli/latest:$PATH\"' >> ~/.bashrc && uv sync",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "innoverio.vscode-dbt-power-user",
+        "samuelcolvin.jinjahtml",
+        "redhat.vscode-yaml",
+        "ms-python.python",
+        "charliermarsh.ruff"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
+        "files.associations": {
+          "*.sql": "jinja-sql",
+          "*.yml": "yaml"
+        }
+      }
+    }
+  }
+}

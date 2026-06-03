@@ -1,0 +1,11 @@
+---
+version: 2
+sources:
+  - name: raw
+    description: Data from application database, brought in by an EL process.
+    tables:
+      - name: raw_customer
+      - name: raw_orders
+      - name: raw_state
+      - name: raw_clickstream
+

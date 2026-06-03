@@ -1,22 +1,6 @@
 ---
 version: 2
 models:
-  - name: customer_orders
-    columns:
-      - name: customer_id
-        tests: [not_null]
-      - name: order_id
-        tests: [unique]
-      - name: order_status
-        tests:
-          - accepted_values:
-              values:
-                - delivered
-                - invoiced
-                - shipped
-                - processing
-                - canceled
-                - unavailable
   - name: order_status_pivot
     columns:
       - name: order_year
@@ -26,7 +10,7 @@ models:
       - name: canceled
       - name: processing
       - name: invoiced
-    tests:
+    data_tests:
       - dbt_expectations.expect_column_pair_values_A_to_be_greater_than_B:
           column_A: delivered
           column_B: invoiced
@@ -35,4 +19,4 @@ models:
   - name: non_existent_table
     columns:
       - name: non_existent
-        tests: [unique]
+        data_tests: [unique]
