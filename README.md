@@ -36,6 +36,7 @@ Clone and cd into the repo as shown below:
 ```bash
 git clone https://github.com/josephmachado/simple_dbt_project.git
 cd simple_dbt_project
+curl https://install.duckdb.org | sh # install duckdb cli 
 ```
 
 ## Run pipeline with dbt 
