@@ -12,27 +12,23 @@ profile: sde_dbt_tutorial
 flags:
   send_anonymous_usage_stats: false
 
-# These configurations specify where dbt should look
-# for different types of files.
-# The `model-paths` config, for example, states that
-# models in this project can be found in the "models/" directory. You probably won't
-# need to change these!
-model-paths: [models]
-analysis-paths: [analysis]
-test-paths: [tests]
-seed-paths: [data]
-macro-paths: [macros]
-snapshot-paths: [scd2]
-target-path: target  # directory which will store compiled SQL files
+model-paths: [models] # folder that dbt run command uses 
+analysis-paths: [analysis] 
+test-paths: [tests] # folder where we store custom test functions
+seed-paths: [data] # folder that dbt seed command uses
+macro-paths: [macros] # folder to store custom SQL fucntionss 
+snapshot-paths: [scd2] # folder that dbt snapshot command uses 
+target-path: target  # folder which will store compiled SQL files
 clean-targets:  # directories to be removed by `dbt clean`
   - target
   - dbt_packages
-  #
+
+
 # Configuring models
 models:
   sde_dbt_tutorial:
-    bronze:
-      +materialized: table
+    bronze: # + => Applies to all models in this folder
+      +materialized: table 
     silver:
       +materialized: table
     gold:
