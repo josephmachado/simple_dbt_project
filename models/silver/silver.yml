@@ -4,5 +4,5 @@ models:
   - name: dim_customer
     columns:
       - name: customer_id
-        tests: [not_null]
+        data_tests: [not_null]
   - name: fct_orders

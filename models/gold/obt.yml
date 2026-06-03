@@ -4,11 +4,11 @@ models:
   - name: orders_obt
     columns:
       - name: customer_id
-        tests: [not_null]
+        data_tests: [not_null]
       - name: order_id
-        tests: [unique]
+        data_tests: [unique]
       - name: order_status
-        tests:
+        data_tests:
           - accepted_values:
               arguments:
                 values:

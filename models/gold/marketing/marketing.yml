@@ -10,7 +10,7 @@ models:
       - name: canceled
       - name: processing
       - name: invoiced
-    tests:
+    data_tests:
       - dbt_expectations.expect_column_pair_values_A_to_be_greater_than_B:
           column_A: delivered
           column_B: invoiced
@@ -19,4 +19,4 @@ models:
   - name: non_existent_table
     columns:
       - name: non_existent
-        tests: [unique]
+        data_tests: [unique]

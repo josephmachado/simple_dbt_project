@@ -12,13 +12,14 @@ profile: sde_dbt_tutorial
 flags:
   send_anonymous_usage_stats: false
 
-model-paths: [models] # folder that dbt run command uses 
-analysis-paths: [analysis] 
-test-paths: [tests] # folder where we store custom test functions
-seed-paths: [data] # folder that dbt seed command uses
-macro-paths: [macros] # folder to store custom SQL fucntionss 
-snapshot-paths: [scd2] # folder that dbt snapshot command uses 
-target-path: target  # folder which will store compiled SQL files
+# Folders for dbt to look at 
+model-paths: [models] # dbt run -> looks in this folder
+analysis-paths: [analysis] # For adhoc analysis
+test-paths: [tests] # dbt test -> looks for custom SQL tests in this folder
+seed-paths: [data] # dbt seed -> looks for small data to be loaded in this folder
+macro-paths: [macros] # looks for SQL functions to be imported
+snapshot-paths: [scd2] # dbt snapshot -> looks for model specific SCD2 create logic here
+target-path: target  # dbt compile / run / test -> looks for compiled SQL to run in the DB in this folder
 clean-targets:  # directories to be removed by `dbt clean`
   - target
   - dbt_packages
@@ -28,7 +29,7 @@ clean-targets:  # directories to be removed by `dbt clean`
 models:
   sde_dbt_tutorial:
     bronze: # + => Applies to all models in this folder
-      +materialized: table 
+      +materialized: view
     silver:
       +materialized: table
     gold:
